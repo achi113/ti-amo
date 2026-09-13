@@ -1,80 +1,406 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juliana's Little World</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f5ff">
+ <title>🌙 July’s Planet 2.0</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="stars"></div>
-<header>
-  <div class="logo">🌙 Juliana's Little World</div>
-  <button id="soundBtn" class="iconBtn">🔊</button>
-</header>
 
-<main>
-  <section id="home" class="screen active">
-    <div class="hero">
-      <div class="moon">🌙</div>
-      <p class="eyebrow">IL TUO PICCOLO POSTO TRANQUILLO</p>
-      <h1>Benvenuta, Juliana</h1>
-      <p class="subtitle">Prenditi un momento, rilassati e gioca un po'.</p>
-      <button class="primary" onclick="showScreen('games')">✨ Inizia a giocare</button>
-    </div>
-  </section>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="logo">
+  🌙 July’s Planet
+  <span>2.0</span>
+</div>
 
-  <section id="games" class="screen">
-    <button class="back" onclick="showScreen('home')">← Home</button>
-    <h2>Scegli un gioco</h2>
-    <p class="sectionText">Niente classifiche, niente fretta. Solo relax.</p>
-    <div class="gameGrid">
-      <button class="gameCard" onclick="showScreen('bubble')"><span>🫧</span><b>Bubble Pop</b><small>Scoppia le bolle</small></button>
-      <button class="gameCard" onclick="showScreen('starsGame')"><span>🌌</span><b>Star Connect</b><small>Crea una costellazione</small></button>
-      <button class="gameCard" onclick="showScreen('memory')"><span>🃏</span><b>Memory</b><small>Trova le coppie</small></button>
-      <button class="gameCard" onclick="showScreen('garden')"><span>🌱</span><b>Mini Garden</b><small>Fai crescere un fiore</small></button>
-    </div>
-  </section>
+    <button id="soundBtn" class="sound-btn">
+      🔊
+    </button>
+  </header>
 
-  <section id="bubble" class="screen gameScreen">
-    <button class="back" onclick="showScreen('games')">← Giochi</button>
-    <h2>🫧 Bubble Pop</h2><p>Scoppia le bolle e rilassati.</p>
-    <div class="score">Bolle: <b id="bubbleScore">0</b></div>
-    <div id="bubbleArea" class="playArea"></div>
-  </section>
 
-  <section id="starsGame" class="screen gameScreen">
-    <button class="back" onclick="showScreen('games')">← Giochi</button>
-    <h2>🌌 Star Connect</h2><p>Clicca le stelle nell'ordine giusto.</p>
-    <div class="score">Stelle: <b id="starScore">0</b>/8</div>
-    <div id="starArea" class="playArea starArea"></div>
-    <button class="secondary" onclick="newStars()">Nuova costellazione</button>
-  </section>
+  <!-- HOME -->
+  <main>
 
-  <section id="memory" class="screen gameScreen">
-    <button class="back" onclick="showScreen('games')">← Giochi</button>
-    <h2>🃏 Memory</h2><p>Trova tutte le coppie, senza timer.</p>
-    <div id="memoryGrid" class="memoryGrid"></div>
-    <button class="secondary" onclick="newMemory()">Ricomincia</button>
-  </section>
+    <section id="home" class="screen active">
 
-  <section id="garden" class="screen gameScreen">
-    <button class="back" onclick="showScreen('games')">← Giochi</button>
-    <h2>🌱 Mini Garden</h2><p>Prenditi cura del tuo piccolo fiore.</p>
-    <div class="garden">
-      <div id="flower" class="flower">🌱</div>
-      <div class="ground"></div>
-      <div class="gardenButtons">
-        <button class="secondary" onclick="water()">💧 Annaffia</button>
-        <button class="secondary" onclick="sun()">☀️ Sole</button>
+      <div class="hero">
+
+        <div class="moon">
+          🌙
+        </div>
+
+        <p class="eyebrow">
+          IL TUO PICCOLO POSTO TRANQUILLO
+        </p>
+
+        <h1>
+          Benvenuta, Juliana
+        </h1>
+
+        <p class="subtitle">
+          Prenditi un momento, rilassati e divertiti un po' 💜
+        </p>
+
+        <button class="primary-btn" data-go="games">
+          ✨ Inizia a giocare
+        </button>
+
       </div>
-      <p id="gardenMsg">Il tuo semino aspetta un po' di attenzione.</p>
-    </div>
-  </section>
-</main>
 
-<footer><span>Made for Juliana</span><button onclick="secret()">✨</button></footer>
-<div id="toast"></div>
-<script src="script.js"></script>
+    </section>
+
+
+
+    <!-- GAMES MENU -->
+
+    <section id="games" class="screen">
+
+      <button class="back-btn" data-go="home">
+        ← Home
+      </button>
+
+      <div class="section-title">
+        <h2>
+          Scegli un gioco
+        </h2>
+
+        <p>
+          Niente fretta. Solo un po' di divertimento.
+        </p>
+      </div>
+
+
+      <div class="game-grid">
+
+
+        <!-- BUBBLE -->
+
+        <button class="game-card" data-game="bubble">
+
+          <div class="game-icon">
+            🫧
+          </div>
+
+          <strong>
+            Bubble Pop
+          </strong>
+
+          <small>
+            Scoppia le bolle
+          </small>
+
+        </button>
+
+
+
+        <!-- STARS -->
+
+        <button class="game-card" data-game="stars">
+
+          <div class="game-icon">
+            🌌
+          </div>
+
+          <strong>
+            Star Connect
+          </strong>
+
+          <small>
+            Crea una costellazione
+          </small>
+
+        </button>
+
+
+
+        <!-- MEMORY -->
+
+        <button class="game-card" data-game="memory">
+
+          <div class="game-icon">
+            🃏
+          </div>
+
+          <strong>
+            Memory
+          </strong>
+
+          <small>
+            Trova le coppie
+          </small>
+
+        </button>
+
+
+
+        <!-- GARDEN -->
+
+        <button class="game-card" data-game="garden">
+
+          <div class="game-icon">
+            🌱
+          </div>
+
+          <strong>
+            Mini Garden
+          </strong>
+
+          <small>
+            Fai crescere un fiore
+          </small>
+
+        </button>
+
+
+
+        <!-- BLOCK BLAST -->
+
+        <button class="game-card featured" data-game="blocks">
+
+          <div class="game-icon">
+            🧱
+          </div>
+
+          <strong>
+            Love Blocks
+          </strong>
+
+          <small>
+            Il nuovo gioco tipo Block Blast
+          </small>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- BUBBLE POP -->
+    <!-- ===================== -->
+
+    <section id="bubble" class="screen game-screen">
+
+      <button class="back-btn" data-go="games">
+        ← Giochi
+      </button>
+
+      <h2>
+        🫧 Bubble Pop
+      </h2>
+
+      <p>
+        Scoppia le bolle e rilassati.
+      </p>
+
+
+      <div class="score-box">
+        Bolle:
+        <b id="bubbleScore">
+          0
+        </b>
+      </div>
+
+
+      <div id="bubbleArena" class="bubble-arena"></div>
+
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- STAR CONNECT -->
+    <!-- ===================== -->
+
+    <section id="stars" class="screen game-screen">
+
+      <button class="back-btn" data-go="games">
+        ← Giochi
+      </button>
+
+      <h2>
+        🌌 Star Connect
+      </h2>
+
+      <p>
+        Clicca le stelle nell'ordine giusto.
+      </p>
+
+
+      <div class="score-box">
+        Stelle:
+        <b id="starScore">
+          0
+        </b>
+        /8
+      </div>
+
+
+      <div id="starArena" class="star-arena"></div>
+
+
+      <button id="newStars" class="secondary-btn">
+        ✨ Nuova costellazione
+      </button>
+
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- MEMORY -->
+    <!-- ===================== -->
+
+    <section id="memory" class="screen game-screen">
+
+      <button class="back-btn" data-go="games">
+        ← Giochi
+      </button>
+
+      <h2>
+        🃏 Memory
+      </h2>
+
+      <p>
+        Trova tutte le coppie, senza timer.
+      </p>
+
+
+      <div id="memoryGrid" class="memory-grid"></div>
+
+
+      <button id="restartMemory" class="secondary-btn">
+        ↻ Ricomincia
+      </button>
+
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- MINI GARDEN -->
+    <!-- ===================== -->
+
+    <section id="garden" class="screen game-screen">
+
+      <button class="back-btn" data-go="games">
+        ← Giochi
+      </button>
+
+      <h2>
+        🌱 Mini Garden
+      </h2>
+
+      <p>
+        Prenditi cura del tuo piccolo fiore.
+      </p>
+
+
+      <div id="plant" class="plant">
+        🌱
+      </div>
+
+
+      <div class="growth-bar">
+        <div id="growth"></div>
+      </div>
+
+
+      <p id="gardenText">
+        Il tuo semino aspetta un po' di attenzione.
+      </p>
+
+
+      <div class="garden-buttons">
+
+        <button id="water" class="secondary-btn">
+          💧 Annaffia
+        </button>
+
+        <button id="sun" class="secondary-btn">
+          ☀️ Sole
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- LOVE BLOCKS -->
+    <!-- ===================== -->
+
+    <section id="blocks" class="screen game-screen">
+
+      <button class="back-btn" data-go="games">
+        ← Giochi
+      </button>
+
+
+      <h2>
+        🧱 Love Blocks
+      </h2>
+
+      <p>
+        Completa righe e colonne. Nessun timer.
+      </p>
+
+
+      <div class="block-header">
+
+        <span>
+          Punteggio:
+          <b id="blockScore">
+            0
+          </b>
+        </span>
+
+
+        <button id="restartBlocks" class="restart-btn">
+          ↻
+        </button>
+
+      </div>
+
+
+      <!-- GRIGLIA -->
+
+      <div id="blockBoard" class="block-board"></div>
+
+
+      <!-- PEZZI -->
+
+      <div id="pieces" class="pieces"></div>
+
+
+      <p class="game-hint">
+        Tocca un pezzo e poi una casella dove vuoi metterlo.
+      </p>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- NOTIFICA -->
+
+  <div id="toast" class="toast"></div>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
+
 </body>
 </html>
