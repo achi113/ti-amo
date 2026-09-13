@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliana's Little World</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stars"></div>
+<header>
+  <div class="logo">🌙 Juliana's Little World</div>
+  <button id="soundBtn" class="iconBtn">🔊</button>
+</header>
+
+<main>
+  <section id="home" class="screen active">
+    <div class="hero">
+      <div class="moon">🌙</div>
+      <p class="eyebrow">IL TUO PICCOLO POSTO TRANQUILLO</p>
+      <h1>Benvenuta, Juliana</h1>
+      <p class="subtitle">Prenditi un momento, rilassati e gioca un po'.</p>
+      <button class="primary" onclick="showScreen('games')">✨ Inizia a giocare</button>
+    </div>
+  </section>
+
+  <section id="games" class="screen">
+    <button class="back" onclick="showScreen('home')">← Home</button>
+    <h2>Scegli un gioco</h2>
+    <p class="sectionText">Niente classifiche, niente fretta. Solo relax.</p>
+    <div class="gameGrid">
+      <button class="gameCard" onclick="showScreen('bubble')"><span>🫧</span><b>Bubble Pop</b><small>Scoppia le bolle</small></button>
+      <button class="gameCard" onclick="showScreen('starsGame')"><span>🌌</span><b>Star Connect</b><small>Crea una costellazione</small></button>
+      <button class="gameCard" onclick="showScreen('memory')"><span>🃏</span><b>Memory</b><small>Trova le coppie</small></button>
+      <button class="gameCard" onclick="showScreen('garden')"><span>🌱</span><b>Mini Garden</b><small>Fai crescere un fiore</small></button>
+    </div>
+  </section>
+
+  <section id="bubble" class="screen gameScreen">
+    <button class="back" onclick="showScreen('games')">← Giochi</button>
+    <h2>🫧 Bubble Pop</h2><p>Scoppia le bolle e rilassati.</p>
+    <div class="score">Bolle: <b id="bubbleScore">0</b></div>
+    <div id="bubbleArea" class="playArea"></div>
+  </section>
+
+  <section id="starsGame" class="screen gameScreen">
+    <button class="back" onclick="showScreen('games')">← Giochi</button>
+    <h2>🌌 Star Connect</h2><p>Clicca le stelle nell'ordine giusto.</p>
+    <div class="score">Stelle: <b id="starScore">0</b>/8</div>
+    <div id="starArea" class="playArea starArea"></div>
+    <button class="secondary" onclick="newStars()">Nuova costellazione</button>
+  </section>
+
+  <section id="memory" class="screen gameScreen">
+    <button class="back" onclick="showScreen('games')">← Giochi</button>
+    <h2>🃏 Memory</h2><p>Trova tutte le coppie, senza timer.</p>
+    <div id="memoryGrid" class="memoryGrid"></div>
+    <button class="secondary" onclick="newMemory()">Ricomincia</button>
+  </section>
+
+  <section id="garden" class="screen gameScreen">
+    <button class="back" onclick="showScreen('games')">← Giochi</button>
+    <h2>🌱 Mini Garden</h2><p>Prenditi cura del tuo piccolo fiore.</p>
+    <div class="garden">
+      <div id="flower" class="flower">🌱</div>
+      <div class="ground"></div>
+      <div class="gardenButtons">
+        <button class="secondary" onclick="water()">💧 Annaffia</button>
+        <button class="secondary" onclick="sun()">☀️ Sole</button>
+      </div>
+      <p id="gardenMsg">Il tuo semino aspetta un po' di attenzione.</p>
+    </div>
+  </section>
+</main>
+
+<footer><span>Made for Juliana</span><button onclick="secret()">✨</button></footer>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
